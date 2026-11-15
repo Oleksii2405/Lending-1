@@ -1,6 +1,9 @@
 (function () {
   "use strict";
 
+  /* Google Apps Script Web App, що дописує ліди в Google-таблицю "Ліди Товарка" */
+  var LEADS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxnwb5TQl5jqQnlHGNjR1PWBjKtaaADlGtBuEUAl2K7d7RPFf-JiUZ-PvrENrd4b_Bz/exec";
+
   /* ============ Product / pricing data (джерело правди для всіх розрахунків) ============ */
   var PRODUCT = {
     name: "Летюча дрифт-машинка 2 в 1",
@@ -291,9 +294,9 @@
       submitBtn.disabled = true;
       submitBtnText.textContent = "Надсилаємо…";
 
-      fetch("api/order.php", {
+      fetch(LEADS_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(payload)
       })
         .then(function (resp) {
