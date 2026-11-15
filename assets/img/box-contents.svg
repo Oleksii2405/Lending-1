@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <rect width="1200" height="900" fill="#ffffff"/>
+  <rect x="16" y="16" width="1168" height="868" fill="none" stroke="#cfd6e8" stroke-width="3" stroke-dasharray="14 10" rx="22"/>
+  <text x="600" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#0b1120">ФОТО: ПОВНА КОМПЛЕКТАЦІЯ</text>
+  <text x="600" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#4b5468">box-contents.jpg · 1200×900px</text>
+  <text x="600" y="502" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#4b5468">Машинка, пульт, USB-кабель, інструкція, коробка — розкладені</text>
+</svg>
