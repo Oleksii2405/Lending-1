@@ -46,7 +46,10 @@
       pill.type = "button";
       pill.className = "qty-pill js-qty-pill";
       pill.dataset.qty = opt.qty;
-      pill.innerHTML = opt.qty + " шт" + (opt.discount > 0 ? "<small>−" + opt.discount + "%</small>" : "<small>&nbsp;</small>");
+      pill.innerHTML =
+        (opt.discount > 0 ? '<span class="qty-pill-badge">−' + opt.discount + '%</span>' : "") +
+        '<span class="qty-pill-qty">' + opt.qty + ' шт</span>' +
+        '<span class="qty-pill-price">' + fmt(opt.total) + '</span>';
       pill.classList.toggle("is-active", opt.qty === state.qty);
       pill.addEventListener("click", function () {
         setQty(opt.qty);
