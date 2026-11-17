@@ -217,6 +217,7 @@
 
   function trackLead(opt) {
     safeFbq("track", "Lead", { content_ids: [PRODUCT.id], currency: PRODUCT.currency, value: opt.total });
+    safeFbq("track", "Purchase", { content_ids: [PRODUCT.id], content_type: "product", currency: PRODUCT.currency, value: opt.total, num_items: opt.qty });
     safeTtq("track", "CompletePayment", { content_id: PRODUCT.id, currency: PRODUCT.currency, value: opt.total });
     safeGtag("event", "generate_lead", { currency: PRODUCT.currency, value: opt.total });
   }
