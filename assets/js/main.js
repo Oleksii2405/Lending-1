@@ -302,6 +302,60 @@
     if (el) el.textContent = new Date().getFullYear();
   }
 
+  /* ============ Social proof toasts ============ */
+  function initSocialProofToasts() {
+    var toast1 = document.getElementById("toastViewers");
+    var toast2 = document.getElementById("toastPurchase");
+    if (!toast1 || !toast2) return;
+
+    var STORAGE_KEY = "toyboomSocialProofShown";
+    try {
+      if (sessionStorage.getItem(STORAGE_KEY)) return;
+      sessionStorage.setItem(STORAGE_KEY, "1");
+    } catch (e) {}
+
+    function showToast(el) {
+      el.classList.add("is-active");
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          el.classList.add("is-visible");
+        });
+      });
+    }
+
+    function hideToast(el, onHidden) {
+      el.classList.remove("is-visible");
+      setTimeout(function () {
+        el.classList.remove("is-active");
+        if (onHidden) onHidden();
+      }, 350);
+    }
+
+    function runStep(el, onDone) {
+      var autoTimer = setTimeout(function () {
+        hideToast(el, onDone);
+      }, 4000);
+
+      var closeBtn = el.querySelector(".social-toast-close");
+      function onClose() {
+        clearTimeout(autoTimer);
+        if (closeBtn) closeBtn.removeEventListener("click", onClose);
+        hideToast(el, onDone);
+      }
+      if (closeBtn) closeBtn.addEventListener("click", onClose);
+
+      showToast(el);
+    }
+
+    setTimeout(function () {
+      runStep(toast1, function () {
+        setTimeout(function () {
+          runStep(toast2, null);
+        }, 6000);
+      });
+    }, 5000);
+  }
+
   function init() {
     renderOrderQtyPills();
     setQty(1);
@@ -311,6 +365,7 @@
     initCtaTracking();
     initOrderForm();
     initYear();
+    initSocialProofToasts();
     trackViewContent();
   }
 
