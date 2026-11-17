@@ -36,38 +36,6 @@
     return QTY_OPTIONS[0];
   }
 
-  /* ============ Render: bundle grid (блок 6) ============ */
-  function renderBundleGrid() {
-    var grid = document.getElementById("bundleGrid");
-    var tpl = document.getElementById("qtyCardTpl");
-    if (!grid || !tpl) return;
-    grid.innerHTML = "";
-    QTY_OPTIONS.forEach(function (opt) {
-      var node = tpl.content.firstElementChild.cloneNode(true);
-      node.dataset.qty = opt.qty;
-      node.classList.toggle("is-active", opt.qty === state.qty);
-      var pop = node.querySelector(".qty-badge-pop");
-      if (opt.popular) {
-        pop.hidden = false;
-      } else {
-        pop.remove();
-      }
-      node.querySelector(".qty-count").textContent = opt.qty + " шт";
-      var savings = PRODUCT.oldPrice ? null : null;
-      var saveText = opt.discount > 0
-        ? "Економія " + fmt(opt.qty * QTY_OPTIONS[0].total - opt.total)
-        : "Без знижки";
-      node.querySelector(".qty-save").textContent = saveText;
-      node.querySelector(".qty-total").innerHTML = fmt(opt.total) +
-        (opt.discount > 0 ? '<span class="qty-off">−' + opt.discount + "%</span>" : "");
-      node.querySelector(".qty-each").textContent = opt.qty > 1 ? fmt(opt.each) + " за штуку" : "";
-      node.addEventListener("click", function () {
-        setQty(opt.qty);
-      });
-      grid.appendChild(node);
-    });
-  }
-
   /* ============ Render: order form qty pills (блок 8) ============ */
   function renderOrderQtyPills() {
     var grid = document.getElementById("orderQtyGrid");
@@ -335,7 +303,6 @@
   }
 
   function init() {
-    renderBundleGrid();
     renderOrderQtyPills();
     setQty(1);
     initReveal();
