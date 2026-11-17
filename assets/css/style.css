@@ -286,13 +286,19 @@ section{position:relative}
 .order-price-row .price-now{font-size:22px;color:var(--ink)}
 .order-price-row .price-old{font-size:14px}
 .qty-label{font-size:13px;font-weight:800;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;display:block}
-.order-qty-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px}
+.order-qty-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
 .qty-pill{
-  border:2px solid var(--line);border-radius:12px;padding:10px 4px;text-align:center;background:#fff;
-  font-size:13px;font-weight:800;color:var(--ink-soft);position:relative;
+  border:2px solid var(--line);border-radius:14px;padding:12px 14px;text-align:left;background:#fff;
+  position:relative;transition:border-color .15s ease,background .15s ease;
 }
-.qty-pill small{display:block;font-weight:700;font-size:11px;color:var(--ink-faint);margin-top:2px}
-.qty-pill.is-active{border-color:var(--violet);color:var(--violet);background:rgba(124,58,237,.06)}
+.qty-pill-badge{
+  position:absolute;top:-9px;right:10px;background:var(--grad-cta);color:#fff;
+  font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;
+}
+.qty-pill-qty{display:block;font-size:16px;font-weight:800;color:var(--ink)}
+.qty-pill-price{display:block;font-size:14px;font-weight:700;color:var(--ink-soft);margin-top:4px}
+.qty-pill.is-active{border-color:var(--violet);background:rgba(124,58,237,.06)}
+.qty-pill.is-active .qty-pill-qty{color:var(--violet)}
 .order-total-row{
   display:flex;align-items:center;justify-content:space-between;background:var(--surface-alt);
   border-radius:14px;padding:14px 16px;margin-bottom:18px;
